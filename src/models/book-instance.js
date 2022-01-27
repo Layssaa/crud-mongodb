@@ -1,8 +1,9 @@
 const mongoose = require("../database/index");
+const Schema = mongoose.Schema;
 
-const BookInstanceSchema = new mongoose.Schema({
+const BookInstanceSchema = new Schema({
   book: {
-    type: String,
+    type:  Schema.Types.ObjectId,
     require: true,
     lowercase: true,
   },
@@ -13,15 +14,13 @@ const BookInstanceSchema = new mongoose.Schema({
   status: {
     type: String,
     required: true,
+    enum: ['Available', 'Maintenance', 'Loaned', 'Reserved'], // valores permitidos de uma string.
+    default: 'Maintenance'
   },
   due_back: {
     type: Date,
-    required: true,
-  },
-  url: {
-    type: String,
-    required: true,
-  },
+    default: Date.now
+    },
   createAt: {
     type: Date,
     default: Date.now,

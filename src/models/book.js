@@ -1,13 +1,15 @@
 const mongoose = require("../database/index");
+const Schema = mongoose.Schema;
 
-const BookSchema = new mongoose.Schema({
+const BookSchema = new Schema({
   title: {
     type: String,
     require: true,
     lowercase: true,
   },
   author: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: "Author",
     required: true,
     lowercase: true,
   },
@@ -15,14 +17,16 @@ const BookSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  genre: {
+  isbn: {
     type: String,
     required: true,
   },
-  url: {
-    type: String,
-    required: true,
-  },
+  genre: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Genre",
+    },
+  ],
   createAt: {
     type: Date,
     default: Date.now,

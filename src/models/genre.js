@@ -1,35 +1,12 @@
 const mongoose = require("../database/index");
+const Schema = mongoose.Schema;
 
-const GenreSchema = new mongoose.Schema({
-  first_name: {
-    type: String,
-    require: true,
-    lowercase: true,
-  },
-  family_name: {
-    type: String,
-    required: true,
-    lowercase: true,
-  },
-  date_of_birth: {
-    type: Date,
-    required: true,
-  },
-  date_of_death: {
-    type: Date,
-    required: true,
-  },
+
+const GenreSchema = new Schema({
   name: {
     type: String,
-    required: true,
-  },
-  lifespan: {
-    type: String,
-    required: true,
-  },
-  url: {
-    type: String,
-    required: true,
+    require: true,
+    enum:  ['Fantasy', 'Science Fiction', 'Historical Fiction', 'Realistic Fiction', 'Fan Fiction', 'Narrative Non Fiction', 'Biography', 'Periodicals', 'Sel-help Book', 'Reference Book']
   },
   createAt: {
     type: Date,

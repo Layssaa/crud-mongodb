@@ -1,10 +1,10 @@
 const mongoose = require("../database/index");
+const Schema = mongoose.Schema;
 
-const AutorSchema = new mongoose.Schema({
-  first_name: {
+const AutorSchema = new Schema({
+  name: {
     type: String,
-    require: true,
-    lowercase: true,
+    required: true,
   },
   family_name: {
     type: String,
@@ -17,19 +17,11 @@ const AutorSchema = new mongoose.Schema({
   },
   date_of_death: {
     type: Date,
-    required: true,
-  },
-  name: {
-    type: String,
-    required: true,
+    required: false,
   },
   lifespan: {
     type: String,
-    required: true,
-  },
-  url: {
-    type: String,
-    required: true,
+    required: false,
   },
   createAt: {
     type: Date,
