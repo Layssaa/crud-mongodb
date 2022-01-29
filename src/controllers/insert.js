@@ -7,10 +7,10 @@ const InsertBook = async (req, res) => {
   try {
     const insert = await Book(req.body);
     await insert.save();
-    res.send(insert);
+    res.status(200).send({ data: insert });
   } catch (error) {
     console.log(error);
-    res.send("Error when try save it");
+    res.status(200).send({ status: "500", msg: "Error when try save it" });
   }
 };
 

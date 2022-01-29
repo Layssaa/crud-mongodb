@@ -1,6 +1,13 @@
 const UpdateBook = async (req, res) => {
     console.log('UPDATE BOOKS');
-    res.send('update books')
+
+    try {
+        res.status(200).send({data: "update"})
+    } catch (error) {
+        res.status(200).send({ status: "500", msg: "Updated books" });
+    }
+   
+
 
     // update
     // https://mongoosejs.com/docs/tutorials/findoneandupdate.html

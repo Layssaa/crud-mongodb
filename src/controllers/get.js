@@ -3,12 +3,11 @@ const { Book } = require("../models/book");
 const GetBooks = async (req, res) => {
   console.log("GET BOOKS");
   try {
-    const SEARCH = await Book.findOne();
-    res.send(SEARCH);
-    
+    const SEARCH = await Book.find();
+    res.status(200).send({ data: SEARCH });
   } catch (error) {
     console.log(error);
-    res.send("CAN'T LOAD BOOKS");
+    res.status(200).send({ status: "500", msg: "CAN'T LOAD BOOKS" });
   }
 };
 
