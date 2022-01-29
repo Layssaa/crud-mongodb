@@ -38,12 +38,9 @@ const InsertBook = async (req, res) => {
 };
 
 const InsertAuthor = async (req, res) => {
-  console.log(req.body);
-
   try {
     const insert = await Author(req.body);
     await insert.save();
-    // const data = Author.find()
     res.send(insert);
   } catch (error) {
     console.log(error);
@@ -52,12 +49,9 @@ const InsertAuthor = async (req, res) => {
 };
 
 const InsertGenre = async (req, res) => {
-  console.log(req.body);
-
   try {
     const insert = await Genre(req.body);
     await insert.save();
-    // const data = Author.find()
     res.send(insert);
   } catch (error) {
     console.log(error);
