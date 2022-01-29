@@ -7,7 +7,7 @@ const GetBooks = async (req, res) => {
     res.status(200).send({ data: SEARCH });
   } catch (error) {
     console.log(error);
-    res.status(200).send({ status: "500", msg: "CAN'T LOAD BOOKS" });
+    res.status(200).send({ status: "500", msg: "Can't load books" });
   }
 };
 
