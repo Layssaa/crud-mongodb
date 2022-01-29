@@ -15,8 +15,7 @@ const InsertBook = async (req, res) => {
       .send({ status: "400", msg: "All information must be completed" });
 
   try {
-    const { author } = req.body;
-    const { genre } = req.body;
+    const { author, genre } = req.body;
 
     const authorId = await getIdAuthor(author);
     const genreId = await getIdGenre(genre);

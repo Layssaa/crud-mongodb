@@ -17,6 +17,6 @@ router.post("/sendgenre", InsertGenre);
 
 router.put("/update", UpdateBook);
 
-router.put("/delete", DeleteBook);
+router.delete("/delete/:id", DeleteBook);
 
 module.exports = router ;

@@ -1,6 +1,19 @@
+const { Book } = require("../models/book");
+
 const DeleteBook = async (req, res) => {
-  console.log("DELETE BOOKS");
-  res.status(200).send({ msg: "deleted book" });
+  const { id } = req.params;
+  console.log(id);
+
+  if (!id) return res.status(200).send({ status: "400", msg: "Invalid id" });
+
+  try {
+    const deletedBook = await Book.deleteOne({ id: id });
+    res.status(200).send({ data: "deleted book!" });
+    
+  } catch (error) {
+    console.log(error);
+    res.status(200).send({ status: 500, msg: "deleted book" });
+  }
 };
 
 module.exports = { DeleteBook };
