@@ -1,13 +1,38 @@
 const { Author } = require("../models/author");
 const { Book } = require("../models/book");
 const { Genre } = require("../models/genre");
+const { getIdAuthor } = require("../utils/get-id-author");
+const { getIdGenre } = require("../utils/get-id-genre");
 
 const InsertBook = async (req, res) => {
-  console.log(req.body);
+  const findUndefined = Object.entries(req.body).filter(
+    ([_, value]) => value === ""
+  );
+
+  console.log(findUndefined.length);
+
+  if (findUndefined.length !== 0)
+    return res
+      .status(200)
+      .send({ status: "400", msg: "All information must be completed" });
+
   try {
-    const insert = await Book(req.body);
+    const { author } = req.body;
+    const { genre } = req.body;
+
+    const authorId = await getIdAuthor(author);
+    const genreId = await getIdGenre(genre);
+
+    const toInsert = {
+      ...req.body,
+      author: authorId,
+      genre: genreId,
+    };
+
+    const insert = await Book(toInsert);
     await insert.save();
-    res.status(200).send({ data: insert });
+
+    res.status(200).send({ data: "insert" });
   } catch (error) {
     console.log(error);
     res.status(200).send({ status: "500", msg: "Error when try save it" });
