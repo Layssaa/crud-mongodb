@@ -9,8 +9,6 @@ const InsertBook = async (req, res) => {
     ([_, value]) => value === ""
   );
 
-  console.log(findUndefined.length);
-
   if (findUndefined.length !== 0)
     return res
       .status(200)
