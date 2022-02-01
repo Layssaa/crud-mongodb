@@ -5,7 +5,6 @@ const { getIdAuthor } = require("../utils/get-id-author");
 const { getIdGenre } = require("../utils/get-id-genre");
 
 const InsertBook = async (req, res) => {
-
   try {
     const { author, genre } = req.body;
 
@@ -29,7 +28,6 @@ const InsertBook = async (req, res) => {
 };
 
 const InsertAuthor = async (req, res) => {
-
   try {
     const insert = await Author(req.body);
     await insert.save();
@@ -41,7 +39,6 @@ const InsertAuthor = async (req, res) => {
 };
 
 const InsertGenre = async (req, res) => {
- 
   try {
     const insert = await Genre(req.body);
     await insert.save();

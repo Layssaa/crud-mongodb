@@ -14,7 +14,7 @@ const search = async (_obj) => {
   if (Object.keys(_obj).length === 0) {
     return await Book.find({}).sort({ title: -1 });
   }
-  return await Book.find({ title: _obj.title });
+  return await Book.find({ ..._obj });
 };
 
 module.exports = { GetBooks };
