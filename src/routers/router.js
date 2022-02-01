@@ -9,7 +9,7 @@ const {
   InsertGenre,
 } = require("../controllers/insert");
 const { UpdateBook } = require("../controllers/update");
-const { VerifyFields } = require("../middlewares/insert-verify");
+const { VerifyFields } = require("../middlewares/verify-fields");
 
 router.get("/search?", GetBooks);
 
