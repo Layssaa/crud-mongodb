@@ -13,7 +13,7 @@ router.post("/sendauthor", insertVerifyInfo, InsertAuthor);
 
 router.post("/sendgenre",insertVerifyInfo, InsertGenre);
 
-router.get("/search", GetBooks);
+router.get("/search?", GetBooks);
 
 router.put("/update", UpdateBook);
 
