@@ -5,14 +5,6 @@ const { getIdAuthor } = require("../utils/get-id-author");
 const { getIdGenre } = require("../utils/get-id-genre");
 
 const InsertBook = async (req, res) => {
-  const findUndefined = Object.entries(req.body).filter(
-    ([_, value]) => value === ""
-  );
-
-  if (findUndefined.length !== 0)
-    return res
-      .status(200)
-      .send({ status: "400", msg: "All information must be completed" });
 
   try {
     const { author, genre } = req.body;
@@ -37,24 +29,26 @@ const InsertBook = async (req, res) => {
 };
 
 const InsertAuthor = async (req, res) => {
+
   try {
     const insert = await Author(req.body);
     await insert.save();
     res.send(insert);
   } catch (error) {
     console.log(error);
-    res.send("Error when try save it");
+    res.status(200).send({ status: "500", msg: "Error when try save it" });
   }
 };
 
 const InsertGenre = async (req, res) => {
+ 
   try {
     const insert = await Genre(req.body);
     await insert.save();
     res.send(insert);
   } catch (error) {
     console.log(error);
-    res.send("Error when try save it");
+    res.status(200).send({ status: "500", msg: "Error when try save it" });
   }
 };
 

@@ -5,15 +5,15 @@ const { DeleteBook } = require("../controllers/delete");
 const { GetBooks } = require("../controllers/get");
 const { InsertBook, InsertAuthor, InsertGenre } = require("../controllers/insert");
 const { UpdateBook } = require("../controllers/update");
-const { LogRouters } = require("../middlewares/logs");
+const { insertVerifyInfo } = require("../middlewares/insert-verify");
+
+router.post("/send",insertVerifyInfo, InsertBook);
+
+router.post("/sendauthor", insertVerifyInfo, InsertAuthor);
+
+router.post("/sendgenre",insertVerifyInfo, InsertGenre);
 
 router.get("/search", GetBooks);
-
-router.post("/send", InsertBook);
-
-router.post("/sendauthor", InsertAuthor);
-
-router.post("/sendgenre", InsertGenre);
 
 router.put("/update", UpdateBook);
 
