@@ -9,17 +9,17 @@ const {
   InsertGenre,
 } = require("../controllers/insert");
 const { UpdateBook } = require("../controllers/update");
-const { insertVerifyInfo } = require("../middlewares/insert-verify");
+const { VerifyFields } = require("../middlewares/insert-verify");
 
 router.get("/search?", GetBooks);
 
-router.post("/send", insertVerifyInfo, InsertBook);
+router.post("/send", VerifyFields, InsertBook);
 
-router.post("/sendauthor", insertVerifyInfo, InsertAuthor);
+router.post("/sendauthor", VerifyFields, InsertAuthor);
 
-router.post("/sendgenre", insertVerifyInfo, InsertGenre);
+router.post("/sendgenre", VerifyFields, InsertGenre);
 
-router.put("/update?", insertVerifyInfo, UpdateBook);
+router.put("/update?", VerifyFields, UpdateBook);
 
 router.delete("/delete/:id", DeleteBook);
 

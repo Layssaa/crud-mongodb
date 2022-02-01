@@ -1,4 +1,4 @@
-const insertVerifyInfo = async (req, res, next) => {
+const VerifyFields = async (req, res, next) => {
   const findUndefined = Object.entries(req.body).filter(
     ([_, value]) => value === ""
   );
@@ -11,4 +11,4 @@ const insertVerifyInfo = async (req, res, next) => {
   next();
 };
 
-module.exports = { insertVerifyInfo };
+module.exports = { VerifyFields };
