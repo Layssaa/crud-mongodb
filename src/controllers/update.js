@@ -1,6 +1,6 @@
 const { Book } = require("../models/book");
 
-const UpdateBook = async (req, res) => {
+const updateBook = async (req, res) => {
   const { id } = req.query;
 
   if (!id)
@@ -20,4 +20,4 @@ const UpdateBook = async (req, res) => {
   }
 };
 
-module.exports = { UpdateBook };
+module.exports = { updateBook };

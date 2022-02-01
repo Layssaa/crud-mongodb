@@ -1,26 +1,28 @@
 const express = require("express");
 const router = express.Router();
 
-const { DeleteBook } = require("../controllers/delete");
-const { GetBooks } = require("../controllers/get");
+const { deleteBook } = require("../controllers/delete");
+const { getBooks } = require("../controllers/get");
 const {
-  InsertBook,
-  InsertAuthor,
-  InsertGenre,
+  insertBook,
+  insertAuthor,
+  insertGenre,
 } = require("../controllers/insert");
-const { UpdateBook } = require("../controllers/update");
-const { VerifyFields } = require("../middlewares/verify-fields");
+const { updateBook } = require("../controllers/update");
+const { verifyFields } = require("../middlewares/verify-fields");
 
-router.get("/search?", GetBooks);
+// mudar nomes das funções para letras minusculas
 
-router.post("/send", VerifyFields, InsertBook);
+router.get("/search?", getBooks);
 
-router.post("/sendauthor", VerifyFields, InsertAuthor);
+router.post("/send", verifyFields, insertBook);
 
-router.post("/sendgenre", VerifyFields, InsertGenre);
+router.post("/sendauthor", verifyFields, insertAuthor);
 
-router.put("/update?", VerifyFields, UpdateBook);
+router.post("/sendgenre", verifyFields, insertGenre);
 
-router.delete("/delete/:id", DeleteBook);
+router.put("/update?", verifyFields, updateBook);
+
+router.delete("/delete/:id", deleteBook);
 
 module.exports = router;

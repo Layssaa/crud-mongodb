@@ -3,12 +3,12 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-const { LogRouters } = require("./middlewares/logs");
+const { logRouters } = require("./middlewares/logs");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-if (process.env.NODE_AMBIENT === "DEVELOPMENT") app.use(LogRouters);
+if (process.env.NODE_ENV === "development") app.use(logRouters);
 
 app.use(require("./routers/router"));
 

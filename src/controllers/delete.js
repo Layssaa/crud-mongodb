@@ -1,6 +1,6 @@
 const { Book } = require("../models/book");
 
-const DeleteBook = async (req, res) => {
+const deleteBook = async (req, res) => {
   const { id } = req.params;
 
   if (!id) return res.status(200).send({ status: "400", msg: "Invalid id" });
@@ -15,4 +15,4 @@ const DeleteBook = async (req, res) => {
   }
 };
 
-module.exports = { DeleteBook };
+module.exports = { deleteBook };

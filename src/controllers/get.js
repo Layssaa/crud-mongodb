@@ -1,6 +1,6 @@
 const { Book } = require("../models/book");
 
-const GetBooks = async (req, res) => {
+const getBooks = async (req, res) => {
   try {
     const SEARCH = await search(req.query); 
     res.status(200).send({ data: SEARCH });
@@ -17,4 +17,4 @@ const search = async (_obj) => {
   return await Book.find({ ..._obj });
 };
 
-module.exports = { GetBooks };
+module.exports = { getBooks };
